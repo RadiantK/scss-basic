@@ -1,317 +1,319 @@
-// // $color: royalblue;
-// // .container {
-// //   h1 {
-// //     color: $color;
-// //   }
-// //   .name {
-// //     color: orange;
-// //   }
-// //   .age {
-// //     color: green
-// //   }
-// // }
-
-
-// // 상위 선택자 참조
-
-// .btn {
-//   position: absolute;
-//   &.active {
-//     color: red;
-//   }
-// }
-
-// .list {
-//   li {
-//     &:last-child {
-//       margin-right: 0;
-//     }
-//   }
-// }
-
-// .fs {
-//   &-small { font-size: 12px;}
-//   &-medium { font-size: 14px;}
-//   &-large { font-size: 16px;}
-// }
-
-
-// // 중첩된 속성
-
-// .box {
-//   font: { // 네임스페이스가 동일할 때 가능 font-
-//     weight: bold;
-//     size: 10px;
-//     family: sans-serif;
-//   };
-//   margin: {
-//     top: 10px;
-//     left: 20px;
-//   };
-//   padding: {
-//     top: 10px;
-//     bottom: 40px;
-//     left: 20px;
-//     right: 30px;
-//   };
-// }
-
-
-// // 변수
-
-// $size: 100px; // 전역변수 
-
-// .container {
-//   // $size: 100px; // container 안에서만 사용가능
-//   position: fixed;
-//   top: $size;
-//   .item {
-//     width: $size;
-//     height: 200px;
-//     transform: translateX(200px);
-//   }
-// }
-
-// .box {
-//   width: $size; 
-// }
-
-
-// // 산술 연산
-
-// $size: 30px;
-
-// div {
-//   width: 20px + 20px; //40px
-//   height: 40px - 10px; // 30px
-//   font-size: 10px * 2; // 20px
-//   margin: (30px / 2); // X(나누기는 소괄호 처리, or 변수를 지정해서 나눌것
-//   // margin: $size / 2;
-//   padding: 20px % 7; // 6px
-// }
-
-// span {
-//   font-size: 10px;
-//   line-height: 10px;
-//   font-family: serif;
-//   // 단축속성을 사용할 때는 /기호가 해당내용을 구분해줘야함(/ 기호랑 같음)
-//   // 그래서 단축속성을 사용한 것 처럼 /기호로 나누기가 안됨 
-//   font: 10px / 10px serif
-// }
-
-// // calc(100%-200px) 다른단위의 연산을 하고싶을때 calc 사용
-
-
-// // 재활용
-
-// // .container {
-// //   width: 200px;
-// //   height: 200px;
-// //   background-color: orange;
-// //   display: flex;
-// //   justify-content: center;
-// //   align-items: center;
-// // }
-// // .container .item {
-// //   width: 100px;
-// //   height: 100px;
-// //   background-color: royalblue;
-// //   display: flex;
-// //   justify-content: center;
-// //   align-items: center;
-// // }
-
-
-
-// // @mixin center {
-// //   display: flex;
-// //   justify-content: center;
-// //   align-items: center;
-// // }
-
-// // .container {
-// //   @include center;
-// //   .item {
-// //     @include center;
-// //   }
-// // }
-// // box {
-// //   @include center;
-// // }
-
-// @mixin box($size: 100px, $color: orange) {
-//   width: $size;
-//   height: $size;
-//   background-color: $color;
-// }
-
-// .container {
-//   @include box(200px, royalblue);
-//   .item {
-//     @include box($color: green);
-//   }
-// }
-// box {
-//   @include box;
-// }
-
-
-// // 반복문 
-
-// @for $i from 1 through 10 {
-//   .box {
-//     width: 100px;
-//   }
-// }
-
-// @for $i from 1 through 10 {
-//   .box:nth-child(#{$i}) {
-//     width: 100px * $i;
-//     // 값을적는부분은 따로 보간처리를 안해도됨
-//   }
-// }
-
-
-// //함수 
-
-// @mixin center {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-
-// @function ratio($size, $ratio) {
-//   @return $size * $ratio
-// }
-
-// .box {
-//   $width: 100px;
-//   width: $width;
-//   height: ratio($width, 1/2);
-//   @include center;
-// }
-
-
-// // 색상 내장 함수 
-
-// // mix($color, red) 첫번째 인수의 색상과 두번째 인수의 색상을 섞어서 새로운 색 
-// // lighten($color, 10%) 첫번째 인수의 색상이 10%만큼 밝게 만들어줌
-// // darken($color, 10%) 첫번째 인수의 색상이 10%만큼 어두워짐
-// // saturate($color, 40%} 첫번째 인수의 해당하는 색의 채도를 40% 올림
-// // desaturate($color, 40%} 첫번째 인수의 해당하는 색의 채도를 40% 낮춤
-// // grayscale($color) 해당하는 색상을 그레이색으로 바꿈
-// // invert($color) 색상을 반전시킴
-// // rgba($color, .5) 첫번째 인수의 색상이 50% 투명해짐
-// .box {
-//   $color: royalbule;
-//   width: 200px;
-//   height: 100px;
-//   margin: 20px;
-//   border-radius: 10px;
-//   background-color: $color;
-//   &:hover {
-//     background-color: darken($color, 10%);
-//   }
-//   &.built-in {
-//     background-color: mix()$color;
-//   }
-// }
-
-
-// // 가져오기
-
-// @import "./sub.scss", "./sub2.scss";
-// // @import url("./sub.scss");
-
 // $color: royalblue;
-
 // .container {
 //   h1 {
 //     color: $color;
 //   }
-// }
-
-
-// // 데이터 종류
-
-// $number: 1; // .5, 100px, lem
-// $string: bold; // relatuve, "../image/a.png"
-// $color: red; // blue, #FFFF00, rgna(0,0,0, .1)
-// $boolean: true; // false
-// $null: null;
-// $list: null;
-// $list: orange, royalblue, yellow;
-// // $map JS의 객체데이터와 유사함 Key: value형태, 단 소괄호 사용
-// $map: (
-//   o: orange,
-//   r: royalblue,
-//   y: yellow
-// );
-
-// .box {
-//   width: 100px; // 숫자데이터
-//   color: red; // 색상데이터
-//   position: relative; // 문자데이터
-//   // position: null; 이라고 입력하면 css에 출력 x
-// }
-
-
-// // 반복문 @each
-
-// $number: 1; // .5, 100px, lem
-// $string: bold; // relatuve, "../image/a.png"
-// $color: red; // blue, #FFFF00, rgna(0,0,0, .1)
-// $boolean: true; // false
-// $null: null;
-// $list: null;
-// $list: orange, royalblue, yellow;
-// // $map JS의 객체데이터와 유사함 Key: value형태, 단 소괄호 사용
-// $map: (
-//   o: orange,
-//   r: royalblue,
-//   y: yellow
-// );
-
-// @each $c in $list {
-//   .box {
-//     color: $c;
+//   .name {
+//     color: orange;
+//   }
+//   .age {
+//     color: green
 //   }
 // }
-// //.box { color: orange }
-// //.box { color: royalblue }
-// //.box { color: yellow }
+
+
+// 상위 선택자 참조
+
+.btn {
+  position: absolute;
+  &.active {
+    color: red;
+  }
+}
+
+.list {
+  li {
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.fs {
+  &-small { font-size: 12px;}
+  &-medium { font-size: 14px;}
+  &-large { font-size: 16px;}
+}
+
+
+// 중첩된 속성
+
+.box {
+  font: { // 네임스페이스가 동일할 때 가능 font-
+    weight: bold;
+    size: 10px;
+    family: sans-serif;
+  };
+  margin: {
+    top: 10px;
+    left: 20px;
+  };
+  padding: {
+    top: 10px;
+    bottom: 40px;
+    left: 20px;
+    right: 30px;
+  };
+}
+
+
+// 변수
+
+$size: 100px; // 전역변수 
+
+.container {
+  // $size: 100px; // container 안에서만 사용가능
+  position: fixed;
+  top: $size;
+  .item {
+    width: $size;
+    height: 200px;
+    transform: translateX(200px);
+  }
+}
+
+.box {
+  width: $size; 
+}
+
+
+// 산술 연산
+
+$size: 30px;
+
+div {
+  width: 20px + 20px; //40px
+  height: 40px - 10px; // 30px
+  font-size: 10px * 2; // 20px
+  margin: (30px / 2); // X(나누기는 소괄호 처리, or 변수를 지정해서 나눌것
+  // margin: $size / 2;
+  padding: 20px % 7; // 6px
+}
+
+span {
+  font-size: 10px;
+  line-height: 10px;
+  font-family: serif;
+  // 단축속성을 사용할 때는 /기호가 해당내용을 구분해줘야함(/ 기호랑 같음)
+  // 그래서 단축속성을 사용한 것 처럼 /기호로 나누기가 안됨 
+  font: 10px / 10px serif
+}
+
+// calc(100%-200px) 다른단위의 연산을 하고싶을때 calc 사용
+
+
+// 재활용
+
+.container {
+  width: 200px;
+  height: 200px;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .item {
+  width: 100px;
+  height: 100px;
+  background-color: royalblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  @include center;
+  .item {
+    @include center;
+  }
+}
+.box {
+  @include center;
+}
+
+
+
+@mixin box($size: 100px, $color: orange) {
+  width: $size;
+  height: $size;
+  background-color: $color;
+}
+
+.container {
+  @include box(200px, royalblue);
+  .item {
+    @include box($color: green);
+  }
+}
+.box {
+  @include box;
+}
+
+
+// 반복문 
+
+@for $i from 1 through 10 {
+  .box {
+    width: 100px;
+  }
+}
+
+@for $i from 1 through 10 {
+  .box:nth-child(#{$i}) {
+    width: 100px * $i;
+    // 값을적는부분은 따로 보간처리를 안해도됨
+  }
+}
+
+
+//함수 
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@function ratio($size, $ratio) {
+  @return $size * $ratio
+}
+
+.box {
+  $width: 100px;
+  width: $width;
+  height: ratio($width, 1/2);
+  @include center;
+}
+
+
+// 색상 내장 함수 
+
+// mix($color, red) 첫번째 인수의 색상과 두번째 인수의 색상을 섞어서 새로운 색 
+// lighten($color, 10%) 첫번째 인수의 색상이 10%만큼 밝게 만들어줌
+// darken($color, 10%) 첫번째 인수의 색상이 10%만큼 어두워짐
+// saturate($color, 40%} 첫번째 인수의 해당하는 색의 채도를 40% 올림
+// desaturate($color, 40%} 첫번째 인수의 해당하는 색의 채도를 40% 낮춤
+// grayscale($color) 해당하는 색상을 그레이색으로 바꿈
+// invert($color) 색상을 반전시킴
+// rgba($color, .5) 첫번째 인수의 색상이 50% 투명해짐
+.box {
+  $color: royalblue;
+  width: 200px;
+  height: 100px;
+  margin: 20px;
+  border-radius: 10px;
+  background-color: $color;
+  &:hover {
+    background-color: darken($color, 10%);
+  }
+  &.built-in {
+    background-color: mix()$color;
+  }
+}
+
+
+// 가져오기
+
+@import "./sub.scss", "./sub2.scss";
+// @import url("./sub.scss");
+
+$color: royalblue;
+
+.container {
+  h1 {
+    color: $color;
+  }
+}
+
+
+// 데이터 종류
+
+$number: 1; // .5, 100px, lem
+$string: bold; // relatuve, "../image/a.png"
+$color: red; // blue, #FFFF00, rgna(0,0,0, .1)
+$boolean: true; // false
+$null: null;
+$list: null;
+$list: orange, royalblue, yellow;
+// $map JS의 객체데이터와 유사함 Key: value형태, 단 소괄호 사용
+$map: (
+  o: orange,
+  r: royalblue,
+  y: yellow
+);
+
+.box {
+  width: 100px; // 숫자데이터
+  color: red; // 색상데이터
+  position: relative; // 문자데이터
+  // position: null; 이라고 입력하면 css에 출력 x
+}
+
+
+// 반복문 @each
+
+$number: 1; // .5, 100px, lem
+$string: bold; // relatuve, "../image/a.png"
+$color: red; // blue, #FFFF00, rgna(0,0,0, .1)
+$boolean: true; // false
+$null: null;
+$list: null;
+$list: orange, royalblue, yellow;
+// $map JS의 객체데이터와 유사함 Key: value형태, 단 소괄호 사용
+$map: (
+  o: orange,
+  r: royalblue,
+  y: yellow
+);
+
+@each $c in $list {
+  .box {
+    color: $c;
+  }
+}
+//.box { color: orange }
+//.box { color: royalblue }
+//.box { color: yellow }
  
 
-// @each $key, $value in $map {
-//   .box-#{$key} {
-//     color: $value;
-//   }
-// }
-// //.box-o { color: orange }
-// //.box-r { color: royalblue }
-// //.box-y { color: yellow }
+@each $key, $value in $map {
+  .box-#{$key} {
+    color: $value;
+  }
+}
+//.box-o { color: orange }
+//.box-r { color: royalblue }
+//.box-y { color: yellow }
 
 
-// // 재활용 @content
+// 재활용 @content
 
-// @mixin left-top {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   @content;
-// }
+@mixin left-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @content;
+}
 
-// .container {
-//   width: 100px;
-//   height: 100px;
-//   @include left-top;
-// }
-// .box {
-//   width: 200px;
-//   height: 200px;
-//   @include left-top { //안의 값이 @content 값으로 들어감
-//     bottom: 0;
-//     right: 0;
-//     margin: auto;
-//   }
-// }
+.container {
+  width: 100px;
+  height: 100px;
+  @include left-top;
+}
+.box {
+  width: 200px;
+  height: 200px;
+  @include left-top { //안의 값이 @content 값으로 들어감
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+}
