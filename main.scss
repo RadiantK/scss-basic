@@ -196,7 +196,7 @@ span {
 
 // 색상 내장 함수 
 
-// mix($color, red) 첫번째 인수의 색상과 두번째 인수의 색상을 섞어서 새로운 색 
+// mix($color, red) 첫번째 인수의 색상과 두번째 인수의 색상을 섞어서 새로운 색을 만듬 
 // lighten($color, 10%) 첫번째 인수의 색상이 10%만큼 밝게 만들어줌
 // darken($color, 10%) 첫번째 인수의 색상이 10%만큼 어두워짐
 // saturate($color, 40%} 첫번째 인수의 해당하는 색의 채도를 40% 올림
@@ -215,7 +215,7 @@ span {
     background-color: darken($color, 10%);
   }
   &.built-in {
-    background-color: mix()$color;
+    background-color: mix($color, red);
   }
 }
 
